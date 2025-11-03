@@ -25,6 +25,7 @@ map.on('load', function() {
         }
     });
   map.on('click', 'points-layer', (e) => {
-
+const coordinates = e.features[0].geometry.coordinates.slice();
+            const properties = e.features[0].properties;
     });
 });
