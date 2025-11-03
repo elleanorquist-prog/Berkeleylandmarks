@@ -24,4 +24,7 @@ map.on('load', function() {
             'circle-stroke-color': '#ffffff'
         }
     });
+  map.on('click', 'points-layer', (e) => {
+
+    });
 });
