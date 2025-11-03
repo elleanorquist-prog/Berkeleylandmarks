@@ -7,19 +7,20 @@ const map = new mapboxgl.Map({
   zoom: 9 // starting zoom, again you can choose the level you'd like.
     });
 map.on('load', function() {
-  map.addSource('points-data', {
+    map.addSource('points-data', {
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/elleanorquist-prog/Berkeleylandmarks/refs/heads/main/data/183data.geojson'
     });
+
     map.addLayer({
-      id: 'points-layer',
-      type: 'circle',
-      source: 'points-data',
-      paint: {
-          'circle-color': '#4264FB',
-          'circle-radius': 100,
-          'circle-stroke-width': 2,
-          'circle-stroke-color': '#ffffff'
-      }
-  })
+        id: 'points-layer',
+        type: 'circle',
+        source: 'points-data',
+        paint: {
+            'circle-color': '#4264FB',
+            'circle-radius': 6,
+            'circle-stroke-width': 2,
+            'circle-stroke-color': '#ffffff'
+        }
     });
+});
