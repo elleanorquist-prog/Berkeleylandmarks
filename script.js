@@ -6,6 +6,7 @@ const map = new mapboxgl.Map({
   center: [-122.27, 37.8], // starting position [lng, lat]. Note that lat must be set between -90 and 90. You can choose what you'd like.
   zoom: 9 // starting zoom, again you can choose the level you'd like.
     });
+
 map.on('load', function() {
     map.addSource('points-data', {
         type: 'geojson',
