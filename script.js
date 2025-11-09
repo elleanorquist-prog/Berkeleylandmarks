@@ -18,11 +18,34 @@ map.on('load', function () {
     type: 'circle',
     source: 'points-data',
     paint: {
-      'circle-color': '#4264FB',
+      'circle-color': '#DF9E4E',
       'circle-radius': 6,
       'circle-stroke-width': 2,
       'circle-stroke-color': '#ffffff'
     }
   });
- 
+ map.on('mouseover', 'points-layer', (e) => {
+const coordinates = e.features[0].geometry.coordinates.slice();
+      const properties = e.features[0].properties;
+   
+   const popupContent = `
+            <div>
+                <h3>${properties.original_Landmark}</h3>
+                <p><strong>Address:</strong> ${properties.original_Address}</p>
+                <p><strong>Architect & Date:</strong> ${properties.original_ArchitectandDate}</p>
+                <p><strong>Designated:</strong> ${properties.original_Designated}</p>
+                ${properties.Link ? `<p><a href="${properties.Link}" target="_blank">More Information</a></p>` : ''}
+                ${properties.Notes ? `<p><strong>Notes:</strong> ${properties.Notes}</p>` : ''}
+            </div>
+        `;
+   new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(popupContent)
+            .addTo(map);
+    });
 });
+ document.addEventListener('mousemove', function(e) {
+        const customCursor = document.getElementById('customCursor');
+        customCursor.style.left = e.pageX + 'px';
+        customCursor.style.top = e.pageY + 'px';
+    });
